@@ -4,8 +4,9 @@ export class ItemIterator<T> implements Iterator<T>{
 
     private itemSequence: T[] = [];
 
-    add(items: T[]): void {
+    add(items: T[]): Iterator<T> {
         this.itemSequence.push(...items);
+        return this;
     }
     peek(): T {
         return this.itemSequence[0];
@@ -19,7 +20,8 @@ export class ItemIterator<T> implements Iterator<T>{
     getAll(): T[] {
         return this.itemSequence;
     }
-    setAll(sequence: T[]): void {
+    setAll(sequence: T[]): Iterator<T> {
         this.itemSequence = sequence;
+        return this;
     }
 }

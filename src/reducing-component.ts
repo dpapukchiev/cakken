@@ -10,6 +10,5 @@ export abstract class ReducingComponent<S, T> implements IReducingComponent<S, T
         this.next = next;
     }
     abstract apply(iterator: Iterator<S>, reduced: T): Promise<T>;
-    abstract handle(nextElement: S, reduced: T): Promise<T>;
     abstract canHandle(nextElement: S): boolean;
 }

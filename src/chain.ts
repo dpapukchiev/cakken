@@ -19,7 +19,7 @@ export class Chain<S, T>{
         return this.root;
     }
 
-    public build(): IReducingComponent<S, T> {
+    public build(): Chain<S, T> {
 
         this.validate();
         this.root = this.chainComponents[0];
@@ -33,7 +33,7 @@ export class Chain<S, T>{
                 previous.setNext(next);
             }
         }
-        return this.root;
+        return this;
     }
 
     public async run(initialValue: T, iterator: Iterator<S>): Promise<T> {
