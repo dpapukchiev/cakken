@@ -1,6 +1,10 @@
 import { ReducingComponent } from "./reducing-component";
 import { Iterator} from './iterator.interface';
 
+/**
+ * S - item type to be processed
+ * T - reduced item type
+ */
 export abstract class SingleItemReducingComponent<S, T> extends ReducingComponent<S, T>{
 
     apply(iterator: Iterator<S>, reduced: T): Promise<T> {

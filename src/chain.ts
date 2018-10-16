@@ -1,6 +1,7 @@
 import { Iterator } from './iterator.interface';
 import { IReducingComponent } from './reducing-component.interface';
 import { NullReducingComponent } from './null-reducing-component';
+import { ItemIterator } from './item-iterator';
 
 export class Chain<S, T>{
 
@@ -44,6 +45,14 @@ export class Chain<S, T>{
             initialValue = await this.root.apply(iterator, initialValue);
         }
         return initialValue;
+    }
+
+    public async runOne(initialValue: T, item: S): Promise<T> {
+
+        this.validate();
+        const iterator = new ItemIterator<S>();
+        iterator.add([item]);
+        return this.run(initialValue, iterator);
     }
 
     private validate() {
